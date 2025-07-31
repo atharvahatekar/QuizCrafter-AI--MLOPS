@@ -1,0 +1,11 @@
+Minikube -> for making a kubernates cluster where you can deploy the applications
+Jenkins -> For making CI(Continous Integration) part of CI/CD Pipeline.
+Argo -> For making CD (Continous Deployment) part of CI/CD Pipeline.
+Git-OPS -> Deploy & manage infrastruture or applications using Git as the single source of truth
+Groq -> LLM
+Langchain -> Gen AI framework to interact with LLM
+Dockerhub -> Platform for storing your Docking Images
+Streamlit -> To make UI or frontend of the applications
+Dockerhub -> Platform for storing 
+GCP VM -> Virtaul Machine that can be accessed on cloud. It's a service offered by Google cloud.
+GITHUB -> It will work as a SCM for your project

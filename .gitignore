@@ -1,0 +1,5 @@
+.env
+STUDY_BUDDY_AI.egg-info/
+__pycache__/
+*.pyc
+venv/
