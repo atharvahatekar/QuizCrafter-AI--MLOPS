@@ -9,3 +9,4 @@ Streamlit -> To make UI or frontend of the applications
 Dockerhub -> Platform for storing 
 GCP VM -> Virtaul Machine that can be accessed on cloud. It's a service offered by Google cloud.
 GITHUB -> It will work as a SCM for your project
+Pydantic -> 
