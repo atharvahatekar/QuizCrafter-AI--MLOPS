@@ -30,6 +30,16 @@ class QuizManager:
                         'options' : question.options,
                         'correct_answer': question.correct_answer
                     })
+                
+                elif question_type == "True/False":
+                    question = generator.generate_true_false(topic,difficulty.lower())
+
+                    self.questions.append({
+                        'type' : 'True/False',
+                        'question' : question.question,
+                        'correct_answer': "True" if question.correct_answer else "False",
+                        'explanation': question.explanation
+                    })
 
                 else:
                     question = generator.generate_fill_blank(topic,difficulty.lower())
@@ -51,27 +61,67 @@ class QuizManager:
         self.user_answers = [None] * len(self.questions)
         
         for i,q in enumerate(self.questions):
-            st.markdown(f"**Question {i+1} : {q['question']}**")
-
-            if q['type']=='MCQ':
-                selected_option = st.radio(
-                    f"Select and answer for Question {i+1}",
-                    q['options'],
-                    index=0,
-                    key=f"mcq_{i}"
-                )
+            with st.container():
+                st.markdown("""
+                <div style="
+                    background-color: #263238;
+                    border-left: 5px solid #42A5F5;
+                    padding: 20px;
+                    border-radius: 5px;
+                    margin-bottom: 20px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                ">
+                """, unsafe_allow_html=True)
                 
-                # Store the user's selected option at the specific index
-                self.user_answers[i] = selected_option
-
-            else:
-                user_answer = st.text_input(
-                    f"Fill in the blank for Question {i+1}",
-                    key = f"fill_blank_{i}"
-                )
+                st.markdown(f"<h3 style='color:#90CAF9;'>Question {i+1}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<p style='font-size: 1.1rem; margin-bottom: 15px; color: #E0E0E0;'>{q['question']}</p>", unsafe_allow_html=True)
                 
-                # Store the user's answer at the specific index
-                self.user_answers[i] = user_answer
+                question_type_icons = {
+                    'MCQ': '📋',
+                    'True/False': '🔄',
+                    'Fill in the blank': '🖊️'
+                }
+                
+                icon = question_type_icons.get(q['type'], '❓')
+                st.markdown(f"<p style='color: #B0BEC5; font-size: 0.8rem;'>{icon} {q['type']}</p>", unsafe_allow_html=True)
+
+                if q['type']=='MCQ':
+                    selected_option = st.radio(
+                        "Select your answer:",
+                        q['options'],
+                        index=0,
+                        key=f"mcq_{i}",
+                        horizontal=(len(q['options'][0]) < 15)  # Use horizontal layout for shorter options
+                    )
+                    
+                    # Store the user's selected option at the specific index
+                    self.user_answers[i] = selected_option
+                
+                elif q['type']=='True/False':
+                    col1, col2, col3 = st.columns([1, 2, 1])
+                    with col2:
+                        selected_option = st.radio(
+                            "Select your answer:",
+                            ["True", "False"],
+                            index=0,
+                            key=f"tf_{i}",
+                            horizontal=True
+                        )
+                    
+                    # Store the user's selected option at the specific index
+                    self.user_answers[i] = selected_option
+
+                else:
+                    user_answer = st.text_input(
+                        "Type your answer:",
+                        key=f"fill_blank_{i}",
+                        placeholder="Enter your answer here..."
+                    )
+                    
+                    # Store the user's answer at the specific index
+                    self.user_answers[i] = user_answer
+                
+                st.markdown("</div>", unsafe_allow_html=True)
 
     def evaluate_quiz(self):
         self.results=[]
@@ -93,6 +143,12 @@ class QuizManager:
             if q['type'] == 'MCQ':
                 result_dict['options'] = q['options']
                 # Exact string comparison for MCQ
+                result_dict["is_correct"] = user_ans == q["correct_answer"]
+            
+            elif q['type'] == 'True/False':
+                result_dict['options'] = ["True", "False"]
+                result_dict['explanation'] = q.get('explanation', '')
+                # Exact string comparison for True/False
                 result_dict["is_correct"] = user_ans == q["correct_answer"]
 
             else:

@@ -1,6 +1,6 @@
 from langchain.output_parsers import PydanticOutputParser
-from src.models.question_schemas import MCQQuestion,FillBlankQuestion
-from src.prompts.templates import mcq_prompt_template,fill_blank_prompt_template
+from src.models.question_schemas import MCQQuestion, FillBlankQuestion, TrueFalseQuestion
+from src.prompts.templates import mcq_prompt_template, fill_blank_prompt_template, true_false_prompt_template
 from src.llm.groq_client import get_groq_llm
 from src.config.settings import settings
 from src.common.logger import get_logger
@@ -64,4 +64,17 @@ class QuestionGenerator:
         except Exception as e:
             self.logger.error(f"Failed to generate fillups : {str(e)}")
             raise CustomException("Fill in blanks generation failed" , e)
+    
+    def generate_true_false(self,topic:str,difficulty:str='medium') -> TrueFalseQuestion:
+        try:
+            parser = PydanticOutputParser(pydantic_object=TrueFalseQuestion)
+
+            question = self._retry_and_parse(true_false_prompt_template,parser,topic,difficulty)
+            
+            self.logger.info("Generated a valid True/False Question")
+            return question
+        
+        except Exception as e:
+            self.logger.error(f"Failed to generate true/false question: {str(e)}")
+            raise CustomException("True/False question generation failed" , e)
 

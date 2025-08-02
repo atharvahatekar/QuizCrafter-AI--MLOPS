@@ -27,3 +27,18 @@ class FillBlankQuestion(BaseModel):
         if isinstance(v,dict):
             return v.get('description' , str(v))
         return str(v)
+        
+        
+class TrueFalseQuestion(BaseModel):
+
+    question: str = Field(description="The statement to be judged as true or false")
+
+    correct_answer: bool = Field(description="Whether the statement is true (True) or false (False)")
+    
+    explanation: str = Field(description="Brief explanation of why the statement is true or false")
+
+    @validator('question' , pre=True)
+    def clean_question(cls,v):
+        if isinstance(v,dict):
+            return v.get('description' , str(v))
+        return str(v)

@@ -33,3 +33,21 @@ fill_blank_prompt_template = PromptTemplate(
     ),
     input_variables=["topic", "difficulty"]
 )
+
+true_false_prompt_template = PromptTemplate(
+    template=(
+        "Generate unique and the {difficulty} difficulty level true/false question about {topic}.\n\n"
+        "Return ONLY a JSON object with these exact fields:\n"
+        "- 'question': A clear statement that is either true or false\n"
+        "- 'correct_answer': A boolean value (true or false) indicating if the statement is correct\n"
+        "- 'explanation': A brief explanation of why the statement is true or false\n\n"
+        "Example format:\n"
+        '{{\n'
+        '    "question": "Paris is the capital of France.",\n'
+        '    "correct_answer": true,\n'
+        '    "explanation": "Paris is indeed the capital and largest city of France."\n'
+        '}}\n\n'
+        "Your response:"
+    ),
+    input_variables=["topic", "difficulty"]
+)
