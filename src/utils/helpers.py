@@ -28,7 +28,8 @@ class QuizManager:
                         'type' : 'MCQ',
                         'question' : question.question,
                         'options' : question.options,
-                        'correct_answer': question.correct_answer
+                        'correct_answer': question.correct_answer,
+                        'explanation': question.explanation
                     })
                 
                 elif question_type == "True/False":
@@ -47,7 +48,8 @@ class QuizManager:
                     self.questions.append({
                         'type' : 'Fill in the blank',
                         'question' : question.question,
-                        'correct_answer': question.answer
+                        'correct_answer': question.answer,
+                        'explanation': question.explanation
                     })
         except Exception as e:
             st.error(f"Error generating question {e}")
@@ -144,6 +146,7 @@ class QuizManager:
                 result_dict['options'] = q['options']
                 # Exact string comparison for MCQ
                 result_dict["is_correct"] = user_ans == q["correct_answer"]
+                result_dict['explanation'] = q.get('explanation', '')
             
             elif q['type'] == 'True/False':
                 result_dict['options'] = ["True", "False"]
@@ -155,6 +158,7 @@ class QuizManager:
                 result_dict['options'] = []
                 # Case-insensitive comparison for fill-in-the-blank questions
                 result_dict["is_correct"] = user_ans.strip().lower() == q['correct_answer'].strip().lower()
+                result_dict['explanation'] = q.get('explanation', '')
 
             self.results.append(result_dict)
 

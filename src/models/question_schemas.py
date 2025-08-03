@@ -9,6 +9,8 @@ class MCQQuestion(BaseModel):
 
     correct_answer: str = Field(description="The correct answer from the options")
 
+    explanation: str = Field(description="Brief explanation of why the option is correct")
+
     @validator('question' , pre=True)
     def clean_question(cls,v):
         if isinstance(v,dict):
@@ -21,6 +23,8 @@ class FillBlankQuestion(BaseModel):
     question: str = Field(description="The question text with '___' for the blank")
 
     answer : str = Field(description="The correct word or phrase for the blank")
+
+    explanation: str = Field(description="Brief explanation of why the answer is correct")
 
     @validator('question' , pre=True)
     def clean_question(cls,v):
