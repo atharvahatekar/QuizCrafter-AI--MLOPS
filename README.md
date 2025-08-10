@@ -4,7 +4,6 @@
 
 ![Python](https://img.shields.io/badge/python-v3.10+-blue.svg)
 ![Streamlit](https://img.shields.io/badge/streamlit-1.28+-red.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Groq](https://img.shields.io/badge/Groq-API-orange.svg)
 ![Docker](https://img.shields.io/badge/docker-ready-blue.svg)
 ![Kubernetes](https://img.shields.io/badge/kubernetes-ready-326CE5.svg)
