@@ -16,13 +16,20 @@
 
 ---
 
-## 🚀 Demo
+## 🎯 Workflow
 
 ![QuizCrafter AI Workflow](docs/QuizCrafterAIWorkflow.png)
 
+
+## 🚀 Demo
+
+![QuizCrafter AI Demo Gif](docs/demogif.gif)
+
+
+
 *Experience the power of AI-driven quiz generation with our intuitive interface!*
 
-> 💡 **Demo GIF**: Record a demo GIF showing the quiz generation process and add it as `docs/demo.gif` to showcase the application in action!
+
 
 ## ✨ Features
 
@@ -134,56 +141,6 @@ kubectl apply -f manifests/
 kubectl create secret generic groq-api-secret --from-literal=GROQ_API_KEY=your_api_key
 ```
 
-## 🎮 Usage
-
-### Quick Start
-
-1. **Launch the Application**
-   - Access the web interface at `http://localhost:8501`
-
-2. **Configure Your Quiz**
-   - Select question type (MCQ, True/False, Fill-in-the-Blank)
-   - Enter your topic of interest
-   - Choose difficulty level
-   - Set number of questions (1-10)
-
-3. **Generate & Take Quiz**
-   - Click "🚀 Generate Quiz"
-   - Answer the questions
-   - Submit for instant results
-
-4. **Review Results**
-   - View your score and detailed analysis
-   - Download results as CSV
-   - Create a new quiz or retry
-
-### Advanced Features
-
-#### Custom Topics
-```
-Examples of topics you can use:
-• "Python Programming Fundamentals"
-• "World War II History"
-• "Machine Learning Algorithms"
-• "Shakespeare's Hamlet"
-• "Quantum Physics Basics"
-```
-
-#### Question Types
-
-- **📋 Multiple Choice**: 4 options with one correct answer
-- **🔄 True/False**: Binary choice questions
-- **🖊️ Fill-in-the-Blank**: Complete the missing information
-
-## 🔧 Configuration
-
-### Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `GROQ_API_KEY` | Your Groq API key | ✅ |
-| `MAX_RETRIES` | Max retry attempts for API calls | ❌ (default: 3) |
-
 ### Customization
 
 Edit `src/config/settings.py` to modify:
@@ -208,32 +165,6 @@ Edit `src/config/settings.py` to modify:
 - Performance metrics tracking
 - Data export capabilities
 
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-1. **Fork the repository**
-2. **Create a feature branch**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **Make your changes**
-4. **Add tests** (if applicable)
-5. **Commit your changes**
-   ```bash
-   git commit -m 'Add some amazing feature'
-   ```
-6. **Push to the branch**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-7. **Open a Pull Request**
-
-### Development Guidelines
-- Follow PEP 8 style guidelines
-- Add docstrings to new functions
-- Include unit tests for new features
-- Update documentation as needed
 
 ## 📝 License
 
@@ -245,22 +176,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - GitHub: [@atharvahatekar](https://github.com/atharvahatekar)
 - LinkedIn: [Atharva Hatekar](https://linkedin.com/in/atharvahatekar)
 
-## 🙏 Acknowledgments
-
-- [Groq](https://groq.com/) for providing fast LLM inference
-- [Streamlit](https://streamlit.io/) for the amazing web framework
-- [LangChain](https://langchain.com/) for LLM orchestration
-- The open-source community for inspiration and tools
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [Issues](https://github.com/yourusername/QuizCrafter-AI/issues) page
-2. Create a new issue with detailed information
-3. Join our community discussions
-
----
 
 <div align="center">
 
