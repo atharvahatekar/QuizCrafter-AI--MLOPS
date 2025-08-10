@@ -7,6 +7,16 @@
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Groq](https://img.shields.io/badge/Groq-API-orange.svg)
 ![Docker](https://img.shields.io/badge/docker-ready-blue.svg)
+![Kubernetes](https://img.shields.io/badge/kubernetes-ready-326CE5.svg)
+![LangChain](https://img.shields.io/badge/LangChain-enabled-00D4AA.svg)
+![CI/CD](https://img.shields.io/badge/CI/CD-GitHub_Actions-2088FF.svg)
+![MLOps](https://img.shields.io/badge/MLOps-ready-FF6B6B.svg)
+![Pydantic](https://img.shields.io/badge/Pydantic-validated-E92063.svg)
+![GCP](https://img.shields.io/badge/GCP-cloud_ready-4285F4.svg)
+![GitOps](https://img.shields.io/badge/GitOps-ArgoCD-EF7B4D.svg)
+![Minikube](https://img.shields.io/badge/Minikube-local_dev-326CE5.svg)
+![Jenkins](https://img.shields.io/badge/Jenkins-CI/CD-D33833.svg)
+
 
 **An intelligent AI-powered quiz generation platform that creates personalized quizzes using advanced language models.**
 
